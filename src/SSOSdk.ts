@@ -32,7 +32,7 @@ export class SSOSdk {
   #redis: Redis
 
   /**
-   * Redis Configurations used by the OtpSdk instance
+   * Redis Configurations used by the SSOSdk instance
    */
   REDIS_CONFIG: RedisSdkConfig
   /**
@@ -41,7 +41,7 @@ export class SSOSdk {
   SSO_CONFIG: SSOConfig
 
   /**
-   * Creates an instance of OtpSdk.
+   * Creates an instance of SSOSdk.
    *
    * @constructor
    * @param [config]
@@ -60,7 +60,7 @@ export class SSOSdk {
   }
 
   /**
-   * Initialize the OtpSdk instance. It internally creates a Redis connection
+   * Initialize the SSOSdk instance. It internally creates a Redis connection
    *
    * @async
    * @returns

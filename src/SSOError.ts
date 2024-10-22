@@ -21,7 +21,7 @@ export class SSOError extends Error {
    */
   readonly _isCustomError = true
   /**
-   * Flag to identify if error is a OtpError.
+   * Flag to identify if error is a SSOError.
    */
   readonly _isSSOError = true
   /**
@@ -45,10 +45,10 @@ export class SSOError extends Error {
    */
   error?: any
   /**
-   * Creates an instance of OtpError.
+   * Creates an instance of SSOError.
    *
    * @constructor
-   * @param [e] Any Error instance to wrap with OtpError.
+   * @param [e] Any Error instance to wrap with SSOError.
    * @param [eMap] SSOSdkErrorMap to rewrap error for better understanding.
    */
   constructor(e?: any, eMap?: SSOSdkErrorMap) {
