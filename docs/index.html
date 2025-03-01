@@ -82,7 +82,61 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1>vasanth-sso</h1>
+<h1>SSOSdk</h1>
+<p>SSOSdk is a library that provides Single Sign-On (SSO) integration using Redis. It allows generating SSO redirection URLs and validating SSO tokens with built-in Redis-based session management.</p>
+<h2>Features</h2>
+<ul>
+<li>Initialize SSO SDK with Redis integration</li>
+<li>Generate SSO redirection URLs</li>
+<li>Validate SSO tokens</li>
+<li>Secure token storage with expiration handling</li>
+</ul>
+<h2>Owner</h2>
+<p>Developed and maintained by Vasizebron Technologies.</p>
+<h2>Installation</h2>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-sh">npm install &#64;your-org/ssosdk</code></pre></div><h2>Usage</h2>
+<h3>Import the SSOSdk</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">import { SSOSdk } from &#39;&#64;your-org/ssosdk&#39;</code></pre></div><h3>Initialize the SDK</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">const ssoSdk = new SSOSdk({
+  REDIS_CONFIG: {
+    /* Redis configurations */
+  },
+  SSO_CONFIG: {
+    SSO_TOKEN_EXPIRY_IN_SECS: 3600,
+    WEB_APP_URL: &#39;https://your-app.com/sso/&#39;
+  }
+})
+
+await ssoSdk.initialize()</code></pre></div><h3>Generate SSO Redirection URL</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">const { redirectionURL } = await ssoSdk.generate({
+  userId: &#39;12345&#39;,
+  redirectUri: &#39;https://your-app.com/dashboard&#39;
+})
+console.log(&#39;SSO URL:&#39;, redirectionURL)</code></pre></div><h3>Validate SSO Token</h3>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">const userData = await ssoSdk.validate({ token: &#39;generated-token&#39; })
+console.log(&#39;User Data:&#39;, userData)</code></pre></div><h2>API Reference</h2>
+<h3><code>initialize()</code></h3>
+<p>Initializes the SSO SDK instance and establishes a Redis connection.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">await ssoSdk.initialize()</code></pre></div><h3><code>generate(attrs: SSOGenerateProp): Promise&lt;SSOGenerateData&gt;</code></h3>
+<p>Generates an SSO redirection URL with a unique token stored in Redis.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">const { redirectionURL } = await ssoSdk.generate({ userId: &#39;12345&#39; })</code></pre></div><h3><code>validate(attrs: SSOValidateProp): Promise&lt;SSOValidateData&gt;</code></h3>
+<p>Validates an SSO token and retrieves the associated user data.</p>
+<b>Example :</b><div><pre class="line-numbers"><code class="language-typescript">const userData = await ssoSdk.validate({ token: &#39;generated-token&#39; })</code></pre></div><h2>Error Handling</h2>
+<p>The SDK throws <code>SSOError</code> in case of errors. Common error types:</p>
+<ul>
+<li><code>SSO_SDK_NOT_INITIALIZED_ERROR</code>: SDK not initialized before calling methods.</li>
+<li><code>REDIS_ERROR</code>: Redis operation failure.</li>
+<li><code>SSO_TOKEN_EXPIRED_ERROR</code>: Invalid or expired SSO token.</li>
+</ul>
+<h2>🎯 License</h2>
+<p>This project is licensed under the <strong>MIT License</strong>.</p>
+<hr>
+<h2>📬 Contact</h2>
+<ul>
+<li><strong>Author:</strong> Vasanthkumar</li>
+<li><strong>GitHub:</strong> <a href="https://github.com/vasanthkumar10">@vasanthkumar10</a></li>
+<li><strong>Email:</strong> <a href="mailto:vasizebron10@gmail.com">vasizebron10@gmail.com</a></li>
+</ul>
 
 
 
