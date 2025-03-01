@@ -1,5 +1,5 @@
 {
-  "name": "vasanth-sso",
+  "name": "redis-sso",
   "version": "1.0.0",
   "description": "SSO handshake",
   "sideEffects": false,
